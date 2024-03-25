@@ -3,9 +3,18 @@ package hexlet.code;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 @Command(name = "gendiff", version = "1.0",description = "Compares two configuration files and shows a difference.")
 public class App implements Runnable {
+    @Parameters(description = "path to first file")
+    private String filepath1;
+
+    @Parameters(description = "path to second file")
+    private String filepath2;
+
+    @Option(names = { "-f", "format" }, description = "output format [default: stylish]")
+    private String format = "stylish";
     @Option(names = { "-h", "--help" }, usageHelp = true, description = "Show this help message and exit.")
     boolean helpRequired;
 
