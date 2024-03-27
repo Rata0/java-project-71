@@ -7,7 +7,7 @@ import picocli.CommandLine.Parameters;
 
 import java.io.IOException;
 
-@Command(name = "gendiff", version = "1.0",description = "Compares two configuration files and shows a difference.")
+@Command(name = "gendiff", version = "1.0", description = "Compares two configuration files and shows a difference.")
 public class App implements Runnable {
     @Parameters(description = "path to first file")
     private String filepath1;
@@ -20,7 +20,7 @@ public class App implements Runnable {
     @Option(names = { "-h", "--help" }, usageHelp = true, description = "Show this help message and exit.")
     boolean helpRequired;
 
-    @Option(names = { "-V", "--version" }, versionHelp = true,description = "Print version information and exit.")
+    @Option(names = { "-V", "--version" }, versionHelp = true, description = "Print version information and exit.")
     boolean versionRequested;
 
     public static void main(String[] args) {
