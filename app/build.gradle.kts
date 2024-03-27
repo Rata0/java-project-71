@@ -1,4 +1,5 @@
 plugins {
+    jacoco
     id("java")
     id("application")
     id("checkstyle")
