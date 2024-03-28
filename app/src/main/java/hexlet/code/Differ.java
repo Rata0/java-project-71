@@ -1,27 +1,17 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Differ {
-    public static void main(String[] args) throws IOException {
-        String diff = generate("file1.json", "file2.json");
-        System.out.println(diff);
-    }
-
     public static String generate(String file1, String file2) throws IOException {
-        Map<String, Object> dataFile1 = readFile(file1);
-        Map<String, Object> dataFile2 = readFile(file2);
+        Map<String, Object> dataFile1 = Parser.parser(Files.readString(Path.of(file1)));
+        Map<String, Object> dataFile2 = Parser.parser(Files.readString(Path.of(file2)));
         List<String> differ = differenceMAP(dataFile1, dataFile2);
         StringBuilder result = new StringBuilder("{").append("\n");
         for (String line : differ) {
@@ -30,17 +20,6 @@ public class Differ {
         result.append("}");
 
         return result.toString();
-    }
-
-    private static Map<String, Object> parseJSON(String content) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(content, new TypeReference<Map<String, Object>>() { });
-    }
-
-    private static Map<String, Object> readFile(String filePath) throws IOException {
-        Path path = Paths.get(filePath);
-        String content = Files.readString(path);
-        return parseJSON(content);
     }
 
     private static List<String> differenceMAP(Map<String, Object> map1, Map<String, Object> map2) {
