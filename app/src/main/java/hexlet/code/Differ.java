@@ -1,17 +1,20 @@
 package hexlet.code;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Differ {
+    public static void main(String[] args) throws IOException {
+        String result = generate("src/test/resources/file1.yml", "src/test/resources/file2.yml");
+        System.out.println(result);
+    }
+
     public static String generate(String file1, String file2) throws IOException {
-        Map<String, Object> dataFile1 = Parser.parser(Files.readString(Path.of(file1)));
-        Map<String, Object> dataFile2 = Parser.parser(Files.readString(Path.of(file2)));
+        Map<String, Object> dataFile1 = Parser.parser(file1);
+        Map<String, Object> dataFile2 = Parser.parser(file2);
         List<String> differ = differenceMAP(dataFile1, dataFile2);
         StringBuilder result = new StringBuilder("{").append("\n");
         for (String line : differ) {
