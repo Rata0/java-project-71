@@ -30,12 +30,12 @@ public class Parser {
     private static Map<String, Object> parseJson(Path filepath) throws IOException {
         String json = Files.readString(filepath);
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(json, new TypeReference<>() {});
+        return mapper.readValue(json, new TypeReference<>() { });
     }
 
     private static Map<String, Object> parseYaml(Path filepath) throws IOException {
         String yaml = Files.readString(filepath);
         ObjectMapper mapper = new YAMLMapper();
-        return mapper.readValue(yaml, new TypeReference<>() {});
+        return mapper.readValue(yaml, new TypeReference<>() { });
     }
 }

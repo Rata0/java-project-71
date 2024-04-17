@@ -16,7 +16,7 @@ public class DifferTest {
                 + "  + verbose: true\n"
                 + "}";
 
-        String actualDiff = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json");
+        String actualDiff = Differ.generate("src/test/resources/file1.json", "src/test/resources/file2.json", "stylish");
         assertEquals(expectedDiff, actualDiff);
     }
 
@@ -30,7 +30,7 @@ public class DifferTest {
                 + "  + verbose: true\n"
                 + "}";
 
-        String actualDiff = Differ.generate("src/test/resources/file1.yml", "src/test/resources/file2.yml");
+        String actualDiff = Differ.generate("src/test/resources/file1.yml", "src/test/resources/file2.yml", "stylish");
         assertEquals(expectedDiff, actualDiff);
     }
 }
