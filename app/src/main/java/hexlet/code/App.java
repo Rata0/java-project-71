@@ -31,7 +31,7 @@ public class App implements Runnable {
     @Override
     public void run() {
         try {
-            String result = Differ.generate(filepath1, filepath2);
+            String result = Differ.generate(filepath1, filepath2, format);
             System.out.println(result);
         } catch (IOException e) {
             throw new RuntimeException(e);

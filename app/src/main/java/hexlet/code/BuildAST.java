@@ -56,6 +56,6 @@ public class BuildAST {
 
         return listKeys.stream()
                 .map((key) -> getDifferenceResult(data1, data2, key))
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toCollection(() -> new ArrayList<>()));
     }
 }

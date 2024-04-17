@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Stylish {
-    private static final String ADD = "+ ";
-    private static final String DELETE = "- ";
-    private static final String UNCHANGED = "  ";
-
-    private static void appendDifference(StringBuilder builder, String label, String key, String value) {
+    private static void appendDifference(StringBuilder builder, String sign, String key, String value) {
         String space = " ".repeat(2);
         builder
                 .append(space)
-                .append(label)
+                .append(sign)
                 .append(key)
                 .append(": ")
                 .append(value)
@@ -30,19 +26,19 @@ public class Stylish {
 
             switch (status) {
                 case "deleted":
-                    appendDifference(builder, DELETE, key, value);
+                    appendDifference(builder, "- ", key, value);
                     break;
                 case "added":
-                    appendDifference(builder, ADD, key, value);
+                    appendDifference(builder, "+ ", key, value);
                     break;
                 case "changed":
                     String oldValue = diff.get("oldValue").toString();
                     String newValue = diff.get("newValue").toString();
-                    appendDifference(builder, DELETE, key, oldValue);
-                    appendDifference(builder, ADD, key, newValue);
+                    appendDifference(builder, "- ", key, oldValue);
+                    appendDifference(builder,  "+ ", key, newValue);
                     break;
                 default:
-                    appendDifference(builder, UNCHANGED, key, value);
+                    appendDifference(builder, "  ", key, value);
             }
         });
 

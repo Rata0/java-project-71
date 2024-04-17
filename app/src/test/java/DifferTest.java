@@ -20,6 +20,7 @@ public class DifferTest {
         assertEquals(expectedDiff, actualDiff);
     }
 
+    @Test
     public void testGenerateYML() throws IOException {
         String expectedDiff = "{\n"
                 + "  - follow: false\n"
