@@ -27,7 +27,18 @@ public class App implements Runnable {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
+    public boolean isHelpRequired() {
+        return helpRequired;
+    }
 
+    public boolean isVersionRequested() {
+        return versionRequested;
+    }
+
+    /**
+     * Runs the application. Subclasses may override this method to provide custom behavior.
+     * If overridden, ensure to call super.run() to maintain base functionality.
+     */
     @Override
     public void run() {
         try {
