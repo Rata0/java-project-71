@@ -18,15 +18,17 @@ public class App implements Runnable {
     @Option(names = { "-f", "format" }, description = "output format [default: stylish]")
     private String format = "stylish";
     @Option(names = { "-h", "--help" }, usageHelp = true, description = "Show this help message and exit.")
-    boolean helpRequired;
+    private boolean helpRequired;
 
     @Option(names = { "-V", "--version" }, versionHelp = true, description = "Print version information and exit.")
-    boolean versionRequested;
+    private boolean versionRequested;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
+
+    // Геттеры для переменных helpRequired и versionRequested
     public boolean isHelpRequired() {
         return helpRequired;
     }
