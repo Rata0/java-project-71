@@ -28,11 +28,11 @@ public class App implements Runnable {
         System.exit(exitCode);
     }
 
-    // Геттеры для переменных helpRequired и versionRequested
+    // Геттер для переменной helpRequired
     public boolean isHelpRequired() {
         return helpRequired;
     }
-
+    // Геттер для переменной versionRequested
     public boolean isVersionRequested() {
         return versionRequested;
     }
