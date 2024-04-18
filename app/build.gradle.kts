@@ -42,3 +42,4 @@ tasks.getByName("run", JavaExec::class) {
 }
 
 tasks.jacocoTestReport { reports { xml.required.set(true) } }
+
