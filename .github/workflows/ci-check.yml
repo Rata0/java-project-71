@@ -17,10 +17,9 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.3
-      - run: ./gradlew test
-        working-directory: app
-      - run: ./gradlew checkstyleMain
-        working-directory: app
+      - run: cd app && ./gradlew checkstyleMain
+      - run: cd app && ./gradlew test
+      - run: cd app && ./gradlew jacocoTestReport
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
