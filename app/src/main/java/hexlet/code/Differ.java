@@ -12,7 +12,7 @@ public class Differ {
     public static String generate(String file1, String file2, String titleFormat) throws IOException {
         Map<String, Object> dataFile1 = Parser.parse(file1);
         Map<String, Object> dataFile2 = Parser.parse(file2);
-        ArrayList<HashMap<String, Object>> diffObj = BuildAST.generateDiffObj(dataFile1, dataFile2);
+        ArrayList<HashMap<String, Object>> diffObj = BuildAST.computeDiff(dataFile1, dataFile2);
         return Formatter.format(diffObj, titleFormat);
     }
 
